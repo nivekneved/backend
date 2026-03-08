@@ -89,6 +89,8 @@ initCronJobs();
 
 // Error Handling
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+    console.error('[Global Error]', err);
+    console.error(err.stack);
     const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
     res.status(statusCode).json({
         message: err.message,

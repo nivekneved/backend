@@ -11,14 +11,23 @@ if (!supabaseUrl || !supabaseKey) {
 
     // Create a mock client for development purposes
     supabase = {
-        from: () => ({
-            select: () => ({ data: [], error: null }),
-            insert: () => ({ data: [], error: null }),
-            update: () => ({ data: [], error: null }),
-            delete: () => ({ data: [], error: null }),
-            lte: () => ({ data: [], error: null }), // For cron job
-            lt: () => ({ data: [], error: null })   // For cron job
-        }),
+        from: () => {
+            const chain = {
+                select: () => chain,
+                insert: () => chain,
+                update: () => chain,
+                delete: () => chain,
+                eq: () => chain,
+                neq: () => chain,
+                lte: () => chain,
+                lt: () => chain,
+                order: () => chain,
+                limit: () => chain,
+                single: () => Promise.resolve({ data: null, error: { message: 'Mock Client: Env variables missing' } }),
+                then: (resolve) => resolve({ data: [], error: { message: 'Mock Client: Env variables missing' } })
+            };
+            return chain;
+        },
         auth: {
             signUp: () => ({ data: {}, error: null }),
             signInWithPassword: () => ({ data: {}, error: null }),
