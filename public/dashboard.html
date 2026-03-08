@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Lounge | Backend Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Travel Lounge <span class="logo-engine">Engine</span></div>
+            <div class="status-badge" id="last-updated">System Operational</div>
+        </header>
+
+        <div class="controls">
+            <span class="sort-label">Sort by:</span>
+            <select id="sort-select">
+                <option value="name">Table Name</option>
+                <option value="count">Row Count</option>
+            </select>
+        </div>
+
+        <div class="dashboard-grid" id="stats-grid">
+            <!-- Dynamic Content -->
+        </div>
+
+        <div id="table-view" style="display: none;">
+            <div class="table-header-row">
+                <button id="back-to-stats" class="back-btn">&larr; Back to Overview</button>
+                <h2 id="current-table-title">Audit Logs</h2>
+            </div>
+            <div class="table-container">
+                <table id="data-table">
+                    <thead>
+                        <tr id="table-head">
+                            <!-- Dynamic Head -->
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Dynamic Body -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="/javascripts/dashboard.js"></script>
+</body>
+
+</html>
